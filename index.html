@@ -3,212 +3,179 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portas</title>
-
+<title>Avaliação Afetiva</title>
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background-color: #0B1F3A;
-        color: #F5F5F5;
-        font-family: Georgia, serif;
-        height: 100vh;
-        overflow: hidden;
-    }
-
-    .screen {
-        position: fixed;
-        inset: 0;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        padding: 40px;
-        text-align: center;
-        opacity: 0;
-        transition: opacity 1s ease;
-    }
-
-    .screen.active {
-        display: flex;
-        opacity: 1;
-    }
-
-    .content {
-        max-width: 600px;
-    }
-
-    p {
-        font-size: 1.3rem;
-        line-height: 1.9;
-        margin-bottom: 30px;
-    }
-
-    button {
-        background: transparent;
-        border: 1px solid rgba(255,255,255,0.5);
-        color: #F5F5F5;
-        padding: 14px 36px;
-        font-size: 1rem;
-        border-radius: 999px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-family: inherit;
-    }
-
-    button:hover {
-        background: rgba(255,255,255,0.08);
-    }
-
-    .hint {
-        margin-top: 40px;
-        font-size: 0.9rem;
-        opacity: 0.5;
-    }
-
-    .heart {
-        font-size: 2.2rem;
-        color: #C1121F;
-        margin-bottom: 30px;
-        opacity: 0;
-        animation: aparecer 2s ease forwards;
-    }
-
-    @keyframes aparecer {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .final-text {
-        animation: aparecer 2s ease forwards;
-    }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0B1F3A;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+.container {
+    max-width: 500px;
+    padding: 20px;
+}
+.hidden { display: none; }
+button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    background: #ffffff10;
+    border: 1px solid #ffffff30;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+}
+button:hover { background: #ffffff20; }
+.fade { animation: fade 0.5s; }
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 </style>
 </head>
-
 <body>
-
-<div class="screen active" id="screen1">
-    <div class="content">
-        <p>
-            Algumas portas mudam silenciosamente a direção de uma vida.<br><br>
-
-            Nem sempre percebemos quando as atravessamos.<br><br>
-
-            Mas, às vezes, do outro lado, encontramos alguém que passa a habitar nossas lembranças e a maneira como enxergamos o mundo.
-        </p>
-
-        <button onclick="nextScreen()">
-            Abrir
-        </button>
-    </div>
-</div>
-
-<div class="screen" id="screen2" onclick="nextScreen()">
-    <div class="content">
-        <p>
-            Existe a porta do acaso<br><br>
-
-            Aquela que atravessamos sem imaginar que, do outro lado, alguém importante estará esperando;
-        </p>
-
-        <div class="hint">
-            toque para continuar
-        </div>
-    </div>
-</div>
-
-<div class="screen" id="screen3" onclick="nextScreen()">
-    <div class="content">
-        <p>
-            Existe a porta da vulnerabilidade<br><br>
-
-            A de permitir que alguém conheça partes nossas que costumam permanecer em silêncio;
-        </p>
-
-        <div class="hint">
-            toque para continuar
-        </div>
-    </div>
-</div>
-
-<div class="screen" id="screen4" onclick="nextScreen()">
-    <div class="content">
-        <p>
-            Existe a porta da permanência<br><br>
-
-            Porque permanecer nunca foi apenas ficar<br><br>
-            É também escolher, repetidas vezes, queimar na mesma intensidade
-        </p>
-
-        <div class="hint">
-            toque para continuar
-        </div>
-    </div>
-</div>
-
-<div class="screen" id="screen5" onclick="nextScreen()">
-    <div class="content">
-        <p>
-            E existe a porta da gratidão<br><br>
-
-            Pela companhia<br><br>
-
-            Pelas conversas<br><br>
-
-            Pelos momentos que se tornam lembranças antes mesmo que percebamos.
-        </p>
-
-        <div class="hint">
-            toque para continuar
-        </div>
-    </div>
-</div>
-
-<div class="screen" id="screen6">
-    <div class="content">
-
-        <div class="heart">
-            ♥
-        </div>
-
-        <p class="final-text">
-            O mundo continuou fazendo seus ruídos, mas, depois da tua voz, passei a escutar de outro modo.<br><br>
-            Hoje, eu só queria agradecer por todas as portas que atravessamos juntas.<br><br>
-
-            Eu te amo para todo sempre.
-        </p>
-
-    </div>
-</div>
+<div class="container" id="app"></div>
 
 <script>
-    let current = 1;
+const screens = [
+{
+title:"AVALIAÇÃO AFETIVA DE ALTO RISCO",
+text:`Este questionário foi elaborado por especialistas altamente qualificados em observar duas mulheres apaixonadas tentando coexistir.<br><br>
+Os resultados possuem rigor científico equivalente ao de um teste encontrado na internet às duas da manhã.<br><br>
+Deseja prosseguir?`,
+buttons:["Sim.","Evidentemente, minhas escolhas de vida me trouxeram até aqui."]
+},
+{
+text:"Em um domingo qualquer, qual cenário é mais provável?",
+buttons:[
+"Resolver um desentendimento em cinco minutos.",
+"Transformar um assunto simples em uma tese de doutorado.",
+"Descobrir que ambas estavam certas e erradas ao mesmo tempo.",
+"Preferimos não comentar sem a presença dos nossos advogados."
+]
+},
+{
+text:"Qual destas demonstrações de afeto parece mais realista?",
+buttons:[
+"Eu trouxe chocolate.",
+"Chegou em casa?",
+"Já comeu hoje?",
+"Estou irritada com você, mas continuo querendo saber se você está bem."
+]
+},
+{
+text:"Escolha a frase que melhor representa um relacionamento adulto:",
+buttons:[
+"Concordar em tudo.",
+"Nunca discutir.",
+"Ser perfeitamente racional o tempo todo.",
+"Continuar escolhendo uma à outra, mesmo depois de descobrir que nenhuma das duas é particularmente fácil de lidar."
+]
+},
+{
+text:"Ao longo do relacionamento, vocês desenvolveram:",
+buttons:[
+"Memórias especiais.",
+"Piadas internas incompreensíveis para terceiros.",
+"Discussões absolutamente desnecessárias.",
+"Todas as alternativas anteriores."
+]
+},
+{
+text:"O que constitui uma ameaça real à estabilidade da relação?",
+buttons:[
+"Fome.",
+"Cansaço.",
+"Interpretar mensagens de texto com excesso de criatividade.",
+"Todas as anteriores."
+]
+},
+{
+title:"PROCESSANDO RESULTADOS...",
+text:"Aplicando critérios duvidosos...<br>Consultando fontes questionáveis...<br>Ignorando completamente a objetividade...<br>Solicitando café à equipe responsável...<br>Revisando evidências comprometedoras...",
+buttons:["Ver resultado"]
+},
+{
+title:"RESULTADO",
+text:`Após análises rigorosas e completamente confiáveis, concluímos que:<br><br>
+Vocês são duas pessoas imperfeitamente compatíveis,<br><br>
+estranhamente complementares<br><br>
+e perigosamente importantes uma para a outra.<br><br>
 
-    function nextScreen() {
-        const atual = document.getElementById(`screen${current}`);
-        atual.classList.remove('active');
+Há fortes indícios de que desenvolveram:<br><br>
+✓ piadas internas incompreensíveis para terceiros;<br>
+✓ saudade desproporcional;<br>
+✓ discussões ocasionais sobre assuntos que poderiam ter sido resolvidas com um abraço;<br>
+✓ uma insistência curiosa em continuar escolhendo uma à outra.`,
+buttons:["Ver observações adicionais do relatório"]
+},
+{
+title:"OBSERVAÇÃO Nº 1",
+text:"Curiosamente, os pesquisadores não conseguiram determinar o momento exato em que o extraordinário começou.<br><br>Talvez porque as coisas importantes raramente se anunciem como importantes.",
+buttons:["Continuar"]
+},
+{
+title:"OBSERVAÇÃO Nº 2",
+text:"Às vezes, são as conversas aparentemente banais.<br>Os áudios longos.<br>Os domingos comuns.<br>As preocupações pequenas.<br>As despedidas temporárias.<br>Os retornos.<br>Que silenciosamente reorganizam a maneira como habitamos o mundo.",
+buttons:["Continuar"]
+},
+{
+title:"OBSERVAÇÃO FINAL",
+text:"Depois de extensa análise, os pesquisadores chegaram a uma conclusão unânime:<br><br>algumas pessoas entram na nossa vida e deixam lembranças.<br><br>Outras deixam marcas.<br><br>E existem aquelas que alteram, ainda que discretamente, a forma como escutamos o mundo.",
+buttons:["Deseja encerrar a análise?"]
+},
+{
+text:"Não.<br><br>Há uma última coisa que precisa ser dita.",
+buttons:["Ler conclusão"]
+},
+{
+text:`<small>De: Larissa<br>Para: Franciele</small><br><br>
+O mundo continuou fazendo seus ruídos, mas, depois da tua voz, passei a escutar de outro modo.<br><br>
+Hoje, eu só queria agradecer por todas as portas que atravessamos juntas.<br><br>
+Eu te amo para todo sempre.`,
+buttons:[]
+}
+];
 
-        current++;
+let index = 0;
+const app = document.getElementById("app");
 
-        const proxima = document.getElementById(`screen${current}`);
+function render() {
+    const s = screens[index];
+    app.innerHTML = "";
+    const div = document.createElement("div");
+    div.classList.add("fade");
 
-        if (proxima) {
-            setTimeout(() => {
-                proxima.classList.add('active');
-            }, 300);
-        }
+    if(s.title){
+        const h = document.createElement("h2");
+        h.innerText = s.title;
+        div.appendChild(h);
     }
-</script>
 
+    const p = document.createElement("p");
+    p.innerHTML = s.text;
+    div.appendChild(p);
+
+    if(s.buttons){
+        s.buttons.forEach(b=>{
+            const btn = document.createElement("button");
+            btn.innerText = b;
+            btn.onclick = ()=>{ index++; render(); };
+            div.appendChild(btn);
+        });
+    }
+
+    app.appendChild(div);
+}
+
+render();
+</script>
 </body>
 </html>
