@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Franciele ❤️</title>
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #ffe6eb, #fff5f7);
+    color: #4a4a4a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.container {
+    background: white;
+    border-radius: 24px;
+    padding: 30px 25px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+h1 { font-size: 1.8rem; margin-bottom: 20px; }
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: #f1f1f1;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 25px 0;
+}
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #ff8fab;
+    transition: width 2s ease;
+}
+#message {
+    min-height: 90px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+button {
+    background: #ff8fab;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.hidden { display: none; }
+.final {
+    animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Feliz Dia dos Namorados ❤️</h1>
+
+    <div id="stage1">
+        <p>Carregando os motivos pelos quais eu gosto de você...</p>
+
+        <div class="progress-container">
+            <div class="progress" id="bar"></div>
+        </div>
+
+        <div id="message">0%</div>
+    </div>
+
+    <div id="finalMessage" class="hidden final">
+        <p>
+            Feliz Dia dos Namorados, Franciele.<br><br>
+
+            Obrigada pelas risadas, pelos abraços, pelas conversas e pelos momentos bonitos que construímos juntas.<br><br>
+
+            Espero que a gente continue criando lembranças que façam sentido para nós duas.<br><br>
+
+            Com carinho,<br>
+            <strong>Larissa ❤️</strong>
+        </p>
+    </div>
+
+    <button id="startBtn" onclick="startExperience()">Abrir</button>
+</div>
+
+<script>
+const steps = [
+    { percent: 25, text: "25% • Seu jeito de rir." },
+    { percent: 50, text: "50% • O conforto que às vezes encontro na sua presença." },
+    { percent: 75, text: "75% • As versões minhas que você conheceu." },
+    { percent: 100, text: "100% • Porque você continua sendo alguém muito especial para mim." }
+];
+
+function startExperience() {
+    document.getElementById("startBtn").style.display = "none";
+
+    let i = 0;
+
+    function nextStep() {
+        if (i < steps.length) {
+            document.getElementById("bar").style.width = steps[i].percent + "%";
+            document.getElementById("message").innerText = steps[i].text;
+            i++;
+            setTimeout(nextStep, 2200);
+        } else {
+            document.getElementById("stage1").classList.add("hidden");
+            document.getElementById("finalMessage").classList.remove("hidden");
+        }
+    }
+
+    nextStep();
+}
+</script>
+
+</body>
+</html>
