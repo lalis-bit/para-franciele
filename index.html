@@ -3,127 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para Franciele ❤️</title>
+<title>Portas</title>
+
 <style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: linear-gradient(135deg, #ffe6eb, #fff5f7);
-    color: #4a4a4a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
-    box-sizing: border-box;
-}
-.container {
-    background: white;
-    border-radius: 24px;
-    padding: 30px 25px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-h1 { font-size: 1.8rem; margin-bottom: 20px; }
-.progress-container {
-    width: 100%;
-    height: 12px;
-    background: #f1f1f1;
-    border-radius: 999px;
-    overflow: hidden;
-    margin: 25px 0;
-}
-.progress {
-    width: 0%;
-    height: 100%;
-    background: #ff8fab;
-    transition: width 2s ease;
-}
-#message {
-    min-height: 90px;
-    font-size: 1.05rem;
-    line-height: 1.6;
-}
-button {
-    background: #ff8fab;
-    color: white;
-    border: none;
-    border-radius: 999px;
-    padding: 14px 28px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 20px;
-}
-.hidden { display: none; }
-.final {
-    animation: fadeIn 1s ease;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-</style>
-</head>
-<body>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-<div class="container">
-    <h1>Feliz Dia dos Namorados ❤️</h1>
+    body {
+        background-color: #0B1F3A;
+        color: #F5F5F5;
+        font-family: Georgia, serif;
+        height: 100vh;
+        overflow: hidden;
+    }
 
-    <div id="stage1">
-        <p>Carregando os motivos pelos quais eu gosto de você...</p>
+    .screen {
+        position: fixed;
+        inset: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
 
-        <div class="progress-container">
-            <div class="progress" id="bar"></div>
-        </div>
+    .screen.active {
+        display: flex;
+        opacity: 1;
+    }
 
-        <div id="message">0%</div>
-    </div>
+    .content {
+        max-width: 600px;
+    }
 
-    <div id="finalMessage" class="hidden final">
-        <p>
-            Feliz Dia dos Namorados, Franciele.<br><br>
+    p {
+        font-size: 1.3rem;
+        line-height: 1.9;
+        margin-bottom: 30px;
+    }
 
-            Obrigada pelas risadas, pelos abraços, pelas conversas e pelos momentos bonitos que construímos juntas.<br><br>
+    button {
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.5);
+        color: #F5F5F5;
+        padding: 14px 36px;
+        font-size: 1rem;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-family: inherit;
+    }
 
-            Espero que a gente continue criando lembranças que façam sentido para nós duas.<br><br>
+    button:hover {
+        background: rgba(255,255,255,0.08);
+    }
 
-            Com carinho,<br>
-            <strong>Larissa ❤️</strong>
-        </p>
-    </div>
+    .hint {
+        margin-top: 40px;
+        font-size: 0.9rem;
+        opacity: 0.5;
+    }
 
-    <button id="startBtn" onclick="startExperience()">Abrir</button>
-</div>
+    .heart {
+        font-size: 2.2rem;
+        color: #C1121F;
+        margin-bottom: 30px;
+        opacity: 0;
+        animation: aparecer 2s ease forwards;
+    }
 
-<script>
-const steps = [
-    { percent: 25, text: "25% • Seu jeito de rir." },
-    { percent: 50, text: "50% • O conforto que às vezes encontro na sua presença." },
-    { percent: 75, text: "75% • As versões minhas que você conheceu." },
-    { percent: 100, text: "100% • Porque você continua sendo alguém muito especial para mim." }
-];
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
 
-function startExperience() {
-    document.getElementById("startBtn").style.display = "none";
-
-    let i = 0;
-
-    function nextStep() {
-        if (i < steps.length) {
-            document.getElementById("bar").style.width = steps[i].percent + "%";
-            document.getElementById("message").innerText = steps[i].text;
-            i++;
-            setTimeout(nextStep, 2200);
-        } else {
-            document.getElementById("stage1").classList.add("hidden");
-            document.getElementById("finalMessage").classList.remove("hidden");
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 
-    nextStep();
-}
+    .final-text {
+        animation: aparecer 2s ease forwards;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="screen active" id="screen1">
+    <div class="content">
+        <p>
+            Algumas portas mudam silenciosamente a direção de uma vida.<br><br>
+
+            Nem sempre percebemos quando as atravessamos.<br><br>
+
+            Mas, às vezes, do outro lado, encontramos alguém que passa a habitar nossas lembranças e a maneira como enxergamos o mundo.
+        </p>
+
+        <button onclick="nextScreen()">
+            Abrir
+        </button>
+    </div>
+</div>
+
+<div class="screen" id="screen2" onclick="nextScreen()">
+    <div class="content">
+        <p>
+            Existe a porta do acaso.<br><br>
+
+            Aquela que atravessamos sem imaginar que, do outro lado, alguém importante estará esperando.
+        </p>
+
+        <div class="hint">
+            toque para continuar
+        </div>
+    </div>
+</div>
+
+<div class="screen" id="screen3" onclick="nextScreen()">
+    <div class="content">
+        <p>
+            Existe a porta da vulnerabilidade.<br><br>
+
+            A de permitir que alguém conheça partes nossas que costumam permanecer em silêncio.
+        </p>
+
+        <div class="hint">
+            toque para continuar
+        </div>
+    </div>
+</div>
+
+<div class="screen" id="screen4" onclick="nextScreen()">
+    <div class="content">
+        <p>
+            Existe a porta da permanência.<br><br>
+
+            Porque permanecer nunca foi apenas ficar.<br><br>
+
+            É também escolher, repetidas vezes, construir algo ao lado de alguém.
+        </p>
+
+        <div class="hint">
+            toque para continuar
+        </div>
+    </div>
+</div>
+
+<div class="screen" id="screen5" onclick="nextScreen()">
+    <div class="content">
+        <p>
+            E existe a porta da gratidão.<br><br>
+
+            Pela companhia.<br><br>
+
+            Pelas conversas.<br><br>
+
+            Pelos momentos que se tornam lembranças antes mesmo que percebamos.
+        </p>
+
+        <div class="hint">
+            toque para continuar
+        </div>
+    </div>
+</div>
+
+<div class="screen" id="screen6">
+    <div class="content">
+
+        <div class="heart">
+            ♥
+        </div>
+
+        <p class="final-text">
+            O mundo continuou fazendo seus ruídos, mas, depois da tua voz, passei a escutar de outro modo.<br><br>
+
+            Hoje, eu só queria agradecer por todas as portas que atravessamos juntas.<br><br>
+
+            Eu te amo para todo sempre.
+        </p>
+
+    </div>
+</div>
+
+<script>
+    let current = 1;
+
+    function nextScreen() {
+        const atual = document.getElementById(`screen${current}`);
+        atual.classList.remove('active');
+
+        current++;
+
+        const proxima = document.getElementById(`screen${current}`);
+
+        if (proxima) {
+            setTimeout(() => {
+                proxima.classList.add('active');
+            }, 300);
+        }
+    }
 </script>
 
 </body>
